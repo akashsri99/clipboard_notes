@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clipboard Notes</title>
+
+    <script src="/external_js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/external_js/angular.min.js"></script>
+    <script type="text/javascript" src="/js/ngCtrl.js"></script>
+
+    <script src="/js/popup.js"></script>
+
+    <style>
+            .list-item{
+                padding: 20px;
+            }
+        
+            .sourceDiv{
+                font-size: 10px;
+                padding: 10px 0px 20px 0px;
+            }
+        
+            .lineBreak{
+                border: 1px dashed red;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+
+            .contentButton{
+                padding: 10px;
+                background-color: blue;
+                color: white;
+            }
+
+            .removeBtn{
+                background-color: red;
+                color: white;
+                border-radius: 10px;
+                font-weight: 600;
+            }
+
+            ul {
+              list-style-type: none;
+              margin: 0;
+            padding: 0;
+            }
+
+            button:focus {outline:0;}
+
+        </style>
+</head>
+<body ng-app="ngApp" ng-controller="ngOptionCtrl" style="width:100%;min-width: 480px">
+        <h2 style="text-align:center; color:blue"><u>Your reading list</u></h2>
+
+        <div ng-show="allData.length == 0">
+            <div style="text-align:center;" class="sourceDiv">
+                You have nothing to read.
+                Go ahead and add something amazing to read.
+            </div>
+        </div>
+
+        <ul id="test">
+                <li ng-repeat="data in allData track by $index " class="list-item">
+                    <div ng-show="data.imgUrl">
+                        <img src={{data.imgUrl}} style="width:100%">
+                    </div>
+                        {{data.linkUrl? data.linkUrl:data.key}}
+                        <br>
+                        <br>
+                        <div class="sourceDiv">
+                        From the source: <u><b><a href={{data.url}} target="_blank">{{data.url}}</a></b></u>
+                        </div>
+                        
+                <button ng-click=removeItem($index) class="removeBtn">
+                        DELETE
+                    </button>
+        
+                        <hr class="lineBreak">
+        
+                        
+                </li>
+        </ul>
+<div style="text-align:center;">
+        <button id="fullContent" class="contentButton"> See Full Content </button>
+    </div>
+<input ng-model="test" id="test2" hidden>
+</body>
+
+</html>

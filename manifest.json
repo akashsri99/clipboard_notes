@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "Clipboard Notes",
+    "version": "1.2",
+    "description":"Creating notes from the selected portion of the text or a selected image to revise it later.",
+    "icons":{
+        "16":"images/clipboardx16.jpg",
+        "48":"images/clipboardx48.jpg",
+        "128":"images/clipboardx128.jpg"
+    },
+    "browser_action":{
+        "default_icon": "images/clipboard-01.jpg",
+        "default_popup":"html/popup.html"
+    },
+    "background":{
+        "scripts":["js/eventPage.js"],
+        "persistent": false
+    },
+    "permissions":[
+        "storage",
+        "notifications",
+        "contextMenus"
+    ],
+    "options_page":"html/popup.html"
+}
